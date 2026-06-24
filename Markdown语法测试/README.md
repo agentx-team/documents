@@ -195,17 +195,132 @@ Typora now supports [YAML Front Matter](http://jekyllrb.com/docs/frontmatter/). 
 
 Input `[toc]` and press the `Return` key. This will create a  “Table of Contents” section. The TOC extracts all headings from the document, and its contents are updated automatically as you add to the document.
 
-### Diagrams
+### Diagrams (Mermaid)
 
-To use this feature, please enable it in the preferences panel first. Typora supports diagrams powered by flowchart, sequence diagrams and mermaid.js 
+AgentX renders [Mermaid](https://mermaid.js.org/) diagrams from a fenced code
+block tagged `mermaid`. The block shows a **Render / Code** toggle so you can
+flip between the rendered diagram and its source.
 
-[See here for more details](https://support.typora.io/Draw-Diagrams-With-Markdown/).
+A flowchart:
+
+```mermaid
+flowchart LR
+    A[User prompt] --> B{Has attachments?}
+    B -- Yes --> C[Materialize to workdir]
+    B -- No --> D[Run agent]
+    C --> D
+    D --> E[Stream AG-UI events]
+    E --> F([Reply])
+```
+
+A sequence diagram:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant FE as Frontend
+    participant BE as backend-py
+    U->>FE: Send message
+    FE->>BE: SendStreamingMessage
+    BE-->>FE: AG-UI events (stream)
+    FE-->>U: Rendered reply
+```
+
+### Charts (Vega-Lite)
+
+AgentX renders [Vega-Lite](https://vega.github.io/vega-lite/) charts from a
+fenced code block tagged `vega-lite` whose body is a Vega-Lite JSON spec. Like
+Mermaid, it offers a **Render / Code** toggle.
+
+A bar chart:
+
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart.",
+  "data": {
+    "values": [
+      {"category": "Skills", "count": 12},
+      {"category": "Documents", "count": 7},
+      {"category": "Knowledge", "count": 5},
+      {"category": "Agents", "count": 9}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "category", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y": {"field": "count", "type": "quantitative"}
+  }
+}
+```
+
+A line chart with multiple series:
+
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Multi-series line chart.",
+  "data": {
+    "values": [
+      {"day": 1, "metric": "requests", "value": 120},
+      {"day": 2, "metric": "requests", "value": 180},
+      {"day": 3, "metric": "requests", "value": 150},
+      {"day": 4, "metric": "requests", "value": 240},
+      {"day": 1, "metric": "errors", "value": 5},
+      {"day": 2, "metric": "errors", "value": 9},
+      {"day": 3, "metric": "errors", "value": 3},
+      {"day": 4, "metric": "errors", "value": 7}
+    ]
+  },
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {"field": "day", "type": "quantitative", "axis": {"tickMinStep": 1}},
+    "y": {"field": "value", "type": "quantitative"},
+    "color": {"field": "metric", "type": "nominal"}
+  }
+}
+```
+
+[See Typora's diagram docs for the original syntax notes](https://support.typora.io/Draw-Diagrams-With-Markdown/).
 
 ### Callouts / Github Style Alerts
 
-To use this feature, please enable it in the preferences panel first.
+GitHub-style alerts are blockquotes whose first line is a `[!TYPE]` marker. The
+five types are `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, and `CAUTION`:
 
-[See here for more details](https://support.typora.io/What's-New-1.8/).
+```markdown
+> [!NOTE]
+> Useful information that users should know.
+
+> [!TIP]
+> Helpful advice for doing things better.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+```
+
+Rendered:
+
+> [!NOTE]
+> Useful information that users should know.
+
+> [!TIP]
+> Helpful advice for doing things better.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
 
 ## Span Elements
 
