@@ -115,10 +115,10 @@ The renderer supports both standard Markdown and Obsidian-style embedded media s
 |Content Type|Standard Markdown|Obsidian Embed|
 |---|---|---|
 |Image|`![Alt text](path/to/image.jpg "Optional title")`|`![[image.png]]`|
-|PDF|`[PDF](docs/manual.pdf)`|`![[manual.pdf]]`|
-|Video|`[Video](media/demo.mp4)`|`![[demo.mp4]]`|
-|Audio|`[Audio](media/music.mp3)`|`![[music.mp3]]`|
-|Other Files|`[File](files/archive.zip)`|`![[archive.zip]]` _(creates an embedded attachment or preview when supported)_|
+|PDF|`[PDF](docs/manual.pdf)`|`![[docs/manual.pdf]]`|
+|Video|`[Video](media/demo.mp4)`|`![[media/demo.mp4]]`|
+|Audio|`[Audio](media/music.mp3)`|`![[media/music.mp3]]`|
+|Other Files|`[File](files/archive.zip)`|`![[files/archive.zip]]` _(creates an embedded attachment or preview when supported)_|
 
 Here are some tests：
 ![Atom SVG](https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/atom.svg "Atom SVG")
