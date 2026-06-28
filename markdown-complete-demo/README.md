@@ -373,9 +373,10 @@ Some tests:
 
 ![Atom SVG](https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/atom.svg "Atom SVG")
 ![Image](attachments/image.svg "Optional title")
-![Video](attachments/video.mp4)
+![Video](attachments/video.mp4 "Optional title")
 ![Audio](attachments/audio.mp3)
 ![Archive (zip)](attachments/archive.zip)
+![Image](attachments/image.svg)
 ![Archive (tar.gz)](attachments/archive.tar.gz)
 
 ## 6. Footnotes
