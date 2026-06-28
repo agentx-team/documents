@@ -361,7 +361,7 @@ the same `![...](...)` works for images, video, audio, PDFs, and other files:
 | Content type | Markdown | Rendered as |
 |---|---|---|
 | Image | `![Alt](attachments/image.svg)` | inline image + "View Original" button |
-| Video | `![Clip](attachments/video.mp4)` | inline video player |
+| Video | `![Video](attachments/video.mp4)` | inline video player |
 | Audio | `![Audio](attachments/audio.mp3)` | inline audio player |
 | PDF | `![Manual](docs/manual.pdf)` | inline PDF viewer |
 | Other files | `![File](attachments/archive.zip)` | downloadable file link |
