@@ -379,6 +379,14 @@ Some tests:
 ![Image](attachments/image.svg)
 ![Archive (tar.gz)](attachments/archive.tar.gz)
 
+Here are some html/iframe tests:
+![HTML](attachments/content.html "Dashboard")
+
+iframe without caption and width 400px and height 600px :
+![HTML|400x600](attachments/content.html)
+
+
+
 ## 6. Footnotes
 
 You can create footnotes like this[^footnote].
